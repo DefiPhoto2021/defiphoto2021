@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Profil extends StatelessWidget {
-  int tailleTexte = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
