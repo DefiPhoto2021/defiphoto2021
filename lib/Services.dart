@@ -3,12 +3,12 @@ import 'package:http/http.dart' as http;
 import 'Utilisateur.dart';
 
 class Services {
-  static var ROOT = Uri.parse("http://10.0.2.2:80/EmployeesDB/employee_actions.php");
+  static var ROOT = Uri.parse("http://10.0.2.2:80/employee_actions.php");
   static const _GET_ALL_ACTION = 'GET_ALL';
   static const _ADD_EMP_ACTION = 'ADD_USER';
   static const _UPDATE_EMP_ACTION = 'UPDATE_USER';
   static const _DELETE_EMP_ACTION = 'DELETE_USER';
-  
+
   static Future<List<Utilisateur>> getUtilisateursListe() async {
     try {
       var map = Map<String, dynamic>();
@@ -17,22 +17,27 @@ class Services {
       if (200 == response.statusCode) {
         List<Utilisateur> list = parseResponse(response.body);
         return list;
-      } else {
-      }
+      } else {}
     } catch (e) {
       return null;
     }
     return null;
   }
+
   static Future<Utilisateur> getUtilisateur(String username) async {
     List<Utilisateur> list = await getUtilisateursListe();
-    Utilisateur user = list.firstWhere((element) => element.user == username, orElse: () {return null;});
+    Utilisateur user =
+        list.firstWhere((element) => element.user == username, orElse: () {
+      return null;
+    });
     return user;
   }
 
   static List<Utilisateur> parseResponse(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-    return parsed.map<Utilisateur>((json) => Utilisateur.fromJson(json)).toList();
+    return parsed
+        .map<Utilisateur>((json) => Utilisateur.fromJson(json))
+        .toList();
   }
 
   // Method to add Utilisateur to the database...
