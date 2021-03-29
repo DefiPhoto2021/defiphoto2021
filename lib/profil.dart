@@ -1,4 +1,3 @@
-import 'package:defiphoto2021/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -21,22 +20,21 @@ class Profil extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget> [
-                  Icon(
-                    Icons.account_circle_outlined,
-                    color: Colors.white,
-                    size: 70,
-                  ),
-
+              children: <Widget>[
+                Icon(
+                  Icons.account_circle_outlined,
+                  color: Colors.white,
+                  size: 70,
+                ),
                 Text(
-                    '(prénom + nom)',
-                    style: TextStyle(
-                      color: Colors.white,
-                      letterSpacing: 1.5,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  '(prénom + nom)',
+                  style: TextStyle(
+                    color: Colors.white,
+                    letterSpacing: 1.5,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
                   ),
+                ),
                 Icon(
                   Icons.message_outlined,
                   size: 50,
@@ -88,8 +86,6 @@ class Profil extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
-
           ],
         ),
       ),
