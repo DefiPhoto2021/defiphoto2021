@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="bdeb.u420.defiphoto2021">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="defiphoto2021"
         android:icon="@mipmap/ic_launcher">
