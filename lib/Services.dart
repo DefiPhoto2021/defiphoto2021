@@ -4,13 +4,14 @@ import 'Utilisateur.dart';
 import 'ProgressionClass.dart';
 
 class Services {
-  static var ROOT = Uri.parse("http://10.0.2.2:80/EmployeesDB/employee_actions.php");
+  static var ROOT =
+      Uri.parse("http://10.0.2.2:80/EmployeesDB/employee_actions.php");
   static const _GET_ALL_ACTION = 'GET_ALL';
   static const _GET_ALL_PROG_ACTION = 'GET_ALL_PROG';
   static const _ADD_EMP_ACTION = 'ADD_USER';
   static const _UPDATE_EMP_ACTION = 'UPDATE_USER';
   static const _DELETE_EMP_ACTION = 'DELETE_USER';
-  
+
   static Future<List<Utilisateur>> getUtilisateursListe() async {
     try {
       var map = Map<String, dynamic>();
@@ -19,13 +20,13 @@ class Services {
       if (200 == response.statusCode) {
         List<Utilisateur> list = parseResponse(response.body);
         return list;
-      } else {
-      }
+      } else {}
     } catch (e) {
       return null;
     }
     return null;
   }
+
   static Future<Progression> getProgression(String id) async {
     try {
       var map = Map<String, dynamic>();
@@ -33,32 +34,51 @@ class Services {
       final response = await http.post(ROOT, body: map);
       if (200 == response.statusCode) {
         List<Progression> list = parseResponseProg(response.body);
-        Progression progression = list.firstWhere((element) => element.id == id, orElse: () {return null;});
+        Progression progression =
+            list.firstWhere((element) => element.id == id, orElse: () {
+          return null;
+        });
         return progression;
-      } else {
-      }
+      } else {}
     } catch (e) {
       return null;
     }
     return null;
   }
+
   static Future<Utilisateur> getUtilisateur(String id) async {
     List<Utilisateur> list = await getUtilisateursListe();
-    Utilisateur user = list.firstWhere((element) => element.id == id, orElse: () {return null;});
+    Utilisateur user =
+        list.firstWhere((element) => element.id == id, orElse: () {
+      return null;
+    });
     return user;
   }
 
   static List<Utilisateur> parseResponse(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-    return parsed.map<Utilisateur>((json) => Utilisateur.fromJson(json)).toList();
+    return parsed
+        .map<Utilisateur>((json) => Utilisateur.fromJson(json))
+        .toList();
   }
+
   static List<Progression> parseResponseProg(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-    return parsed.map<Progression>((json) => Progression.fromJson(json)).toList();
+    return parsed
+        .map<Progression>((json) => Progression.fromJson(json))
+        .toList();
   }
 
   // Method to add Utilisateur to the database...
-  static Future<String> addUtilisateur(String id, String nom, String prenom,String password, String type, String id_prof, String nom_stage,) async {
+  static Future<String> addUtilisateur(
+    String id,
+    String nom,
+    String prenom,
+    String password,
+    String type,
+    String id_prof,
+    String nom_stage,
+  ) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _ADD_EMP_ACTION;
