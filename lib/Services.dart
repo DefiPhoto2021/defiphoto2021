@@ -22,6 +22,7 @@ class Services {
       } else {
       }
     } catch (e) {
+      print(e);
       return null;
     }
     return null;

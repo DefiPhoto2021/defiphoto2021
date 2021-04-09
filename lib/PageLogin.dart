@@ -31,7 +31,7 @@ class _PageLogin extends State<PageLogin> {
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageProgression(utilisateur)));
         } else if (utilisateur.type == 'P'){
           //Navigator.pushReplacementNamed(context, '/creationProfile', arguments: utilisateur); //Enleve le bouton pour revenir en arriere
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageCreationProfile(utilisateur)));
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageListeEleves(utilisateur)));
         }else if (utilisateur.type == 'A'){
           //Navigator.pushReplacementNamed(context, '/creationProfile', arguments: utilisateur); //Enleve le bouton pour revenir en arriere
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageListeUtilisateur(utilisateur)));
