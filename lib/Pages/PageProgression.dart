@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Utilisateur.dart';
-import 'ProgressionClass.dart';
-import 'Services.dart';
+import '../Base de données/Utilisateur.dart';
+import '../Base de données/Progression.dart';
+import '../Base de données/Services.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class PageProgression extends StatefulWidget {

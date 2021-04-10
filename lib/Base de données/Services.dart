@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'Utilisateur.dart';
-import 'ProgressionClass.dart';
+import 'Progression.dart';
 
 class Services {
   static var ROOT = Uri.parse("http://10.0.2.2:80/EmployeesDB/employee_actions.php");

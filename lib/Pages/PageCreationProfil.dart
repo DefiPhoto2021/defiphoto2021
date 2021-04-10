@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'Services.dart';
-import 'Utilisateur.dart';
+import '../Base de données/Services.dart';
+import '../Base de données/Utilisateur.dart';
 
 class PageCreationProfile extends StatefulWidget {
   PageCreationProfile(this.utilisateur);

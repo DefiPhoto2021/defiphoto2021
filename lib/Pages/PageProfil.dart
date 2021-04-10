@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Utilisateur.dart';
-import 'Services.dart';
+import '../Base de données/Utilisateur.dart';
+import '../Base de données/Services.dart';
 
 class PageProfil extends StatefulWidget {
   PageProfil(this.etudiant);

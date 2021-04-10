@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'PageLogin.dart';
-import 'Services.dart';
-import 'Utilisateur.dart';
-import 'PageProfil.dart';
-import 'PageProgression.dart';
-import 'PageCreationProfil.dart';
-import 'PageListeEleves.dart';
+import 'Pages/PageLogin.dart';
+import 'Base de données/Services.dart';
+import 'Base de données/Utilisateur.dart';
+import 'Pages/PageProfil.dart';
+import 'Pages/PageProgression.dart';
+import 'Pages/PageCreationProfil.dart';
+import 'Pages/PageListeEleves.dart';
 
 void main() {
   runApp(MyApp());
