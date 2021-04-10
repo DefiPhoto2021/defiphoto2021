@@ -10,6 +10,7 @@ class Services {
   static const _ADD_EMP_ACTION = 'ADD_USER';
   static const _UPDATE_EMP_ACTION = 'UPDATE_USER';
   static const _DELETE_EMP_ACTION = 'DELETE_USER';
+  static const _ADD_QUESTION = 'ADD_QUESTION';
   
   static Future<List<Utilisateur>> getUtilisateursListe() async {
     try {
@@ -83,6 +84,27 @@ class Services {
       return "error + xddd";
     }
   }
+  static Future<String> addQuestion(String id_prof, String id_eleve,String question, String type) async {
+    try {
+      var map = Map<String, dynamic>();
+      map['action'] = _ADD_QUESTION;
+      map['id_prof'] = id_prof;
+      map['id_eleve'] = id_eleve;
+      map['question'] = question;
+      map['type'] = type;
+      final response = await http.post(ROOT, body: map);
+      print('addUtilisateur Response: ${response.body}');
+      if (200 == response.statusCode) {
+        return response.body;
+      } else {
+        print(response.statusCode);
+        return "error";
+      }
+    } catch (e) {
+      print(e);
+      return "error + xddd";
+    }
+  }
 
   // Method to update an Utilisateur in Database...
   static Future<String> updateUtilisateur(
@@ -112,13 +134,13 @@ class Services {
       map['action'] = _DELETE_EMP_ACTION;
       map['id'] = id;
       final response = await http.post(ROOT, body: map);
-      print('deleteUtilisateur Response: ${response.body}');
       if (200 == response.statusCode) {
         return response.body;
       } else {
         return "error";
       }
     } catch (e) {
+      print(e);
       return "error"; // returning just an "error" string to keep this simple...
     }
   }
