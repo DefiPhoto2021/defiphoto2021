@@ -28,15 +28,11 @@ class _PageLogin extends State<PageLogin> {
     if (utilisateur != null) {
       if (utilisateur.password == pass) {
         if (utilisateur.type == 'É'){
-          //Navigator.pushReplacementNamed(context, '/creationProfile', arguments: utilisateur); //Enleve le bouton pour revenir en arriere
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageProgression(utilisateur)));
         } else if (utilisateur.type == 'P'){
-          //Navigator.pushReplacementNamed(context, '/creationProfile', arguments: utilisateur); //Enleve le bouton pour revenir en arriere
-
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageCreerQuestion(utilisateur)));
 
         }else if (utilisateur.type == 'A'){
-          //Navigator.pushReplacementNamed(context, '/creationProfile', arguments: utilisateur); //Enleve le bouton pour revenir en arriere
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageListeUtilisateur(utilisateur)));
         }
 
