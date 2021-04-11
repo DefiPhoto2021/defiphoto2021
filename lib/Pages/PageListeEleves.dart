@@ -61,18 +61,19 @@ class _PageListeEleves extends State<PageListeEleves> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
+                Flexible(child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: RichText(
                       text: TextSpan(
                           text: (liste[i].prenom + ' ' + liste[i].nom),
                           style: TextStyle(fontSize: 24),
                           children: [
-                        TextSpan(
-                            text: ("#" + liste[i].id),
-                            style: TextStyle(fontSize: 16, color: Colors.grey))
-                      ])),
-                ),
+                            TextSpan(
+                                text: ("#" + liste[i].id),
+                                style: TextStyle(fontSize: 16, color: Colors.grey))
+                          ])),
+                ),),
+
                 Row(
 
                   children: [

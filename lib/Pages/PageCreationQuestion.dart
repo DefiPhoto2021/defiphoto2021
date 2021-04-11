@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 import '../Base de données/Services.dart';
 import '../Base de données/Utilisateur.dart';
 
@@ -14,6 +15,7 @@ class _PageCreerQuestion extends State<PageCreerQuestion> {
   _PageCreerQuestion(this.utilisateur);
   final questionCtrl = TextEditingController();
   String type = 'M';
+  String id = '';
   bool selectAll = false;
   bool selection = false;
 
@@ -69,6 +71,7 @@ class _PageCreerQuestion extends State<PageCreerQuestion> {
               });
               verifierListeSelection();
             }
+            print(listeSelection.length);
           })
     ]));
     listeWidget.add(Divider());
@@ -101,13 +104,39 @@ class _PageCreerQuestion extends State<PageCreerQuestion> {
     return listeWidget;
   }
   envoyerQuestion(){
+    trouverID();
+    int verification = 0;
     for (int i = 0; i < listeSelection.length; i++) {
       if (questionCtrl.text != ''){
-        Services.addQuestion(utilisateur.id, listeSelection[i].id, questionCtrl.text, type);
-        questionCtrl.text = '';
+        verification++;
+        Services.addQuestion(id,utilisateur.id, listeSelection[i].id, questionCtrl.text, type);
       }
     }
+    if (verification == listeSelection.length){
+      questionCtrl.text = '';
+    }
 
+  }
+  trouverID(){
+    Random random = new Random();
+    bool diff = true;
+    setState(() {
+      id = (random.nextInt(90000) + 10000).toString();
+    });
+    Services.getQuestionListe().then((value) {
+      do{
+        diff = true;
+        for(var i=0;i<value.length;i++){
+          if (id == value[i].id){
+            setState(() {
+              id = (random.nextInt(9000) + 1000).toString();
+            });
+            diff = false;
+            break;
+          }
+        }
+      }while(!diff);
+    });
   }
   Widget build(BuildContext context) {
     return Scaffold(

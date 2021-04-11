@@ -2,11 +2,13 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'Utilisateur.dart';
 import 'Progression.dart';
+import 'Question.dart';
 
 class Services {
   static var ROOT = Uri.parse("http://10.0.2.2:80/EmployeesDB/employee_actions.php");
   static const _GET_ALL_ACTION = 'GET_ALL';
   static const _GET_ALL_PROG_ACTION = 'GET_ALL_PROG';
+  static const _GET_ALL_QUESTION_ACTION = 'GET_ALL_QUESTION';
   static const _ADD_EMP_ACTION = 'ADD_USER';
   static const _UPDATE_EMP_ACTION = 'UPDATE_USER';
   static const _DELETE_EMP_ACTION = 'DELETE_USER';
@@ -43,6 +45,26 @@ class Services {
     }
     return null;
   }
+  static Future<List<Question>> getQuestionListe() async {
+    try {
+      var map = Map<String, dynamic>();
+      map['action'] = _GET_ALL_QUESTION_ACTION;
+      final response = await http.post(ROOT, body: map);
+      if (200 == response.statusCode) {
+        List<Question> list = parseReponseQuestion(response.body);
+        return list;
+      } else {
+      }
+    } catch (e) {
+      return null;
+    }
+    return null;
+  }
+  static Future<Question> getQuestion(String id) async {
+    List<Question> list = await getQuestionListe();
+    Question question = list.firstWhere((element) => element.id == id, orElse: () {return null;});
+    return question;
+  }
   static Future<Utilisateur> getUtilisateur(String id) async {
     List<Utilisateur> list = await getUtilisateursListe();
     Utilisateur user = list.firstWhere((element) => element.id == id, orElse: () {return null;});
@@ -56,6 +78,10 @@ class Services {
   static List<Progression> parseResponseProg(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
     return parsed.map<Progression>((json) => Progression.fromJson(json)).toList();
+  }
+  static List<Question> parseReponseQuestion(String responseBody) {
+    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+    return parsed.map<Question>((json) => Question.fromJson(json)).toList();
   }
 
   // Method to add Utilisateur to the database...
@@ -81,19 +107,19 @@ class Services {
       }
     } catch (e) {
       print(e);
-      return "error + xddd";
+      return "error";
     }
   }
-  static Future<String> addQuestion(String id_prof, String id_eleve,String question, String type) async {
+  static Future<String> addQuestion(String id, String id_prof, String id_eleve,String question, String type) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _ADD_QUESTION;
+      map['id'] = id;
       map['id_prof'] = id_prof;
       map['id_eleve'] = id_eleve;
       map['question'] = question;
       map['type'] = type;
       final response = await http.post(ROOT, body: map);
-      print('addUtilisateur Response: ${response.body}');
       if (200 == response.statusCode) {
         return response.body;
       } else {
@@ -102,7 +128,7 @@ class Services {
       }
     } catch (e) {
       print(e);
-      return "error + xddd";
+      return "error";
     }
   }
 

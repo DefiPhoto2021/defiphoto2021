@@ -1,3 +1,5 @@
+import 'package:defiphoto2021/Pages/PageAide.dart';
+import 'package:defiphoto2021/Pages/PageQuestionProf.dart';
 import 'package:flutter/material.dart';
 import 'PageListeUtilisateur.dart';
 import 'PageLogin.dart';
@@ -28,9 +30,9 @@ class _PageLogin extends State<PageLogin> {
     if (utilisateur != null) {
       if (utilisateur.password == pass) {
         if (utilisateur.type == 'É'){
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageProgression(utilisateur)));
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageAide()));
         } else if (utilisateur.type == 'P'){
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageCreerQuestion(utilisateur)));
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageQuestionProf(utilisateur)));
 
         }else if (utilisateur.type == 'A'){
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageListeUtilisateur(utilisateur)));
