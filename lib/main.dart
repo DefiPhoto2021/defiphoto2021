@@ -17,28 +17,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RestartWidget(
         child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          routes: <String, WidgetBuilder>{
-            '/creationProfile': (context) => new PageCreationProfile(null),
-            '/login': (context) => new PageLogin(),
-            '/listeEleves': (context) => new PageListeEleves(null),
-            '/progression': (context) => new PageProgression(null),
-            '/profil': (context) => new PageProfil(null),
-            '/aide': (context) => new PageProgression(null),
-          },
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            brightness: Brightness.dark,
-            primarySwatch: Colors.blueGrey,
-            fontFamily: 'Georgia',
-            textTheme: TextTheme(
-              headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-              headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-              bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
-            ),
-          ),
-          initialRoute: '/login',
-        ));
+      debugShowCheckedModeBanner: false,
+      routes: <String, WidgetBuilder>{
+        '/creationProfile': (context) => new PageCreationProfile(null),
+        '/login': (context) => new PageLogin(),
+        '/listeEleves': (context) => new PageListeEleves(null),
+        '/progression': (context) => new PageProgression(null),
+        '/profil': (context) => new PageProfil(null),
+        '/aide': (context) => new PageProgression(null),
+      },
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.blueGrey,
+        fontFamily: 'Georgia',
+        textTheme: TextTheme(
+          headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+          headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+        ),
+      ),
+      initialRoute: '/login',
+    ));
   }
 }
 
@@ -72,4 +72,3 @@ class _RestartWidgetState extends State<RestartWidget> {
     );
   }
 }
-
