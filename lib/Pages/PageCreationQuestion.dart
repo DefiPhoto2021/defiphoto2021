@@ -28,11 +28,12 @@ class _PageCreerQuestion extends State<PageCreerQuestion> {
     super.initState();
   }
 
-  verifierListeSelection(){
+  verifierListeSelection() {
     setState(() {
-      if (listeSelection.isNotEmpty){
+      if (listeSelection.isNotEmpty) {
         selection = true;
-      } else selection = false;
+      } else
+        selection = false;
     });
   }
 
@@ -103,31 +104,33 @@ class _PageCreerQuestion extends State<PageCreerQuestion> {
     }
     return listeWidget;
   }
-  envoyerQuestion(){
+
+  envoyerQuestion() {
     trouverID();
     int verification = 0;
     for (int i = 0; i < listeSelection.length; i++) {
-      if (questionCtrl.text != ''){
+      if (questionCtrl.text != '') {
         verification++;
-        Services.addQuestion(id,utilisateur.id, listeSelection[i].id, questionCtrl.text, type);
+        Services.addQuestion(
+            id, utilisateur.id, listeSelection[i].id, questionCtrl.text, type);
       }
     }
-    if (verification == listeSelection.length){
+    if (verification == listeSelection.length) {
       questionCtrl.text = '';
     }
-
   }
-  trouverID(){
+
+  trouverID() {
     Random random = new Random();
     bool diff = true;
     setState(() {
       id = (random.nextInt(90000) + 10000).toString();
     });
     Services.getQuestionListe().then((value) {
-      do{
+      do {
         diff = true;
-        for(var i=0;i<value.length;i++){
-          if (id == value[i].id){
+        for (var i = 0; i < value.length; i++) {
+          if (id == value[i].id) {
             setState(() {
               id = (random.nextInt(9000) + 1000).toString();
             });
@@ -135,53 +138,75 @@ class _PageCreerQuestion extends State<PageCreerQuestion> {
             break;
           }
         }
-      }while(!diff);
+      } while (!diff);
     });
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Envoyer une question'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: questionCtrl,
-              decoration: InputDecoration(hintText: 'Écrivez votre question ici'),
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return StatefulBuilder(
-                          builder: (context, StateSetter setState) {
-                        return AlertDialog(
-                          content: SingleChildScrollView(
-                            child: ListBody(
-                              children: creerRow(setState),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: questionCtrl,
+                  maxLength: 200,
+                  maxLines: 10,
+                  decoration: InputDecoration(
+                      hintText: 'Écrivez votre question ici',
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.horizontal())),
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return StatefulBuilder(
+                            builder: (context, StateSetter setState) {
+                          return AlertDialog(
+                            content: SingleChildScrollView(
+                              child: ListBody(
+                                children: creerRow(setState),
+                              ),
                             ),
-                          ),
-                        );
+                          );
+                        });
                       });
-                    });
-              },
-              child: Text('Ajouter destinataire(s)'),
-            ),
-            SizedBox(height: 20),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: [creerRadio('M'),creerRadio('É'),creerRadio('T'),creerRadio('I'),creerRadio('E'),creerRadio('R'),]),
-            SizedBox(height: 20),
-            ElevatedButton(child: Text('Envoyer'), onPressed: selection ? envoyerQuestion: null),
-            Text(selection? '': 'Veuillez choisir au moins un destinataire')
-          ],
+                },
+                child: Text('Ajouter destinataire(s)'),
+              ),
+              SizedBox(height: 20),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                creerRadio('M'),
+                creerRadio('É'),
+                creerRadio('T'),
+                creerRadio('I'),
+                creerRadio('E'),
+                creerRadio('R'),
+              ]),
+              SizedBox(height: 20),
+              ElevatedButton(
+                  child: Text('Envoyer'),
+                  onPressed: selection ? envoyerQuestion : null),
+              Text(selection ? '' : 'Veuillez choisir au moins un destinataire')
+            ],
+          ),
         ),
       ),
     );
   }
+
   Widget creerRadio(String val) {
     return Column(children: [
       Text(val),
