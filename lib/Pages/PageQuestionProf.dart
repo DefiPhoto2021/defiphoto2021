@@ -70,15 +70,20 @@ class _PageQuestionProf extends State<PageQuestionProf> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(question.question, style: TextStyle(fontSize: 20)),
-                    Text(valeurTemps,
-                      style: TextStyle(fontSize: 14, color: Colors.grey))
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(question.question, style: TextStyle(fontSize: 18)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(valeurTemps,
+                          style: TextStyle(fontSize: 14, color: Colors.grey)),Row(children: [IconButton(onPressed: null, icon: Icon(Icons.mode_edit))],),
+                    ],
+                  ),
                 ],
-              )), IconButton(onPressed: null, icon: Icon(Icons.mode_edit))
+              )),
             ],
           ),
         ),
@@ -91,18 +96,26 @@ class _PageQuestionProf extends State<PageQuestionProf> {
     Duration diff = DateTime.now().difference(datetime);
     setState(() {
       if ((diff.inDays / 365).floor() > 0) {
-        valeurTemps = 'Il y a ' + (diff.inDays / 365).floor().toString() + ' an(s)';
+        valeurTemps =
+            'Il y a ' + (diff.inDays / 365).floor().toString() + ' an(s)';
       } else if ((diff.inDays / 30).floor() > 0) {
-        valeurTemps = 'Il y a ' + (diff.inDays / 30).floor().toString() + ' mois';
+        valeurTemps =
+            'Il y a ' + (diff.inDays / 30).floor().toString() + ' mois';
       } else if ((diff.inDays).floor() > 0) {
         valeurTemps = 'Il y a ' + (diff.inDays).floor().toString() + ' jour(s)';
+      } else if ((diff.inHours).floor() > 0) {
+        valeurTemps =
+            'Il y a ' + (diff.inHours).floor().toString() + ' heure(s)';
       } else if ((diff.inMinutes).floor() > 0) {
-        valeurTemps = 'Il y a ' + (diff.inMinutes).floor().toString() + ' minute(s)';
+        valeurTemps =
+            'Il y a ' + (diff.inMinutes).floor().toString() + ' minute(s)';
       } else if ((diff.inSeconds).floor() > 0) {
-        valeurTemps = 'Il y a ' + (diff.inSeconds).floor().toString() + ' seconde(s)';
+        valeurTemps =
+            'Il y a ' + (diff.inSeconds).floor().toString() + ' seconde(s)';
       }
     });
   }
+
   Widget creerTab(String type) {
     return SingleChildScrollView(
       child: Column(
@@ -152,8 +165,10 @@ class _PageQuestionProf extends State<PageQuestionProf> {
             creerTab('R'),
           ],
         ),
-        floatingActionButton:
-            FloatingActionButton(onPressed: naviguerCreationQuestion),
+        floatingActionButton: FloatingActionButton(
+          onPressed: naviguerCreationQuestion,
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
