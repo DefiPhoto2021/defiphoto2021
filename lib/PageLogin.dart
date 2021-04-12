@@ -1,3 +1,5 @@
+import 'PageAide.dart';
+import 'PageQuestionProf.dart';
 import 'package:flutter/material.dart';
 import 'PageListeUtilisateur.dart';
 import 'PageLogin.dart';
@@ -6,8 +8,8 @@ import 'Utilisateur.dart';
 import 'PageProfil.dart';
 import 'PageProgression.dart';
 import 'PageCreationProfil.dart';
+import 'PageCreationQuestion.dart';
 import 'PageListeEleves.dart';
-
 
 class PageLogin extends StatefulWidget {
   @override
@@ -27,13 +29,11 @@ class _PageLogin extends State<PageLogin> {
     if (utilisateur != null) {
       if (utilisateur.password == pass) {
         if (utilisateur.type == 'É'){
-          //Navigator.pushReplacementNamed(context, '/creationProfile', arguments: utilisateur); //Enleve le bouton pour revenir en arriere
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageProgression(utilisateur)));
         } else if (utilisateur.type == 'P'){
-          //Navigator.pushReplacementNamed(context, '/creationProfile', arguments: utilisateur); //Enleve le bouton pour revenir en arriere
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageListeEleves(utilisateur)));
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageQuestionProf(utilisateur)));
+
         }else if (utilisateur.type == 'A'){
-          //Navigator.pushReplacementNamed(context, '/creationProfile', arguments: utilisateur); //Enleve le bouton pour revenir en arriere
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageListeUtilisateur(utilisateur)));
         }
 
