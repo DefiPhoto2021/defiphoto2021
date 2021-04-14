@@ -1,16 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'PageListeUtilisateur.dart';
 import 'PageLogin.dart';
+import 'PageQuestionProf.dart';
 import 'Services.dart';
-import 'Utilisateur.dart';
 import 'PageProfil.dart';
 import 'PageProgression.dart';
 import 'PageCreationProfil.dart';
 import 'PageListeEleves.dart';
 
-void main() {
+Future<void> main() async {
+  ThemeData themeData(){
+    return ThemeData(
+      brightness: Brightness.dark,
+      primarySwatch: Colors.blueGrey,
+      fontFamily: 'Georgia',
+      textTheme: TextTheme(
+        headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+        headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+        bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+      ),
+    );
+  }
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var id = prefs.getString('id');
+  if (id != null){
+    Services.getUtilisateur(id).then((value){
+      if (value.type == 'É'){
+        runApp(MaterialApp(home: PageProgression(value), theme: themeData()));
+      } else if (value.type == 'P'){
+        runApp(MaterialApp(home: PageQuestionProf(value),theme: themeData()));
+      }else if (value.type == 'A'){
+        runApp(MaterialApp(home: PageListeUtilisateur(value),theme: themeData()));
+      }
+    });
+  }
   runApp(MyApp());
 }
-
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override

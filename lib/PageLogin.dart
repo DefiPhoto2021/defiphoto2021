@@ -1,3 +1,5 @@
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'PageAide.dart';
 import 'PageQuestionProf.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +30,9 @@ class _PageLogin extends State<PageLogin> {
     Utilisateur utilisateur = await Services.getUtilisateur(user);
     if (utilisateur != null) {
       if (utilisateur.password == pass) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('id', utilisateur.id);
+        print("Shared preference saved!");
         if (utilisateur.type == 'É'){
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageProgression(utilisateur)));
         } else if (utilisateur.type == 'P'){
