@@ -4,7 +4,6 @@ import 'PageCreationQuestion.dart';
 import '../Base de données/Services.dart';
 import '../Base de données/Utilisateur.dart';
 import '../Base de données/Question.dart';
-import 'package:intl/intl.dart';
 
 class PageQuestionProf extends StatefulWidget {
   PageQuestionProf(this.utilisateur);

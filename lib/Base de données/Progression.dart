@@ -8,12 +8,12 @@ class Progression {
   String tache_rep= '';
   String individu= '';
   String individu_rep= '';
-  String envrionnement= '';
-  String envrionnement_rep= '';
+  String environnement= '';
+  String environnement_rep= '';
   String ressource= '';
   String ressource_rep= '';
 
-  Progression({this.id, this.metier, this.metier_rep, this.equipement, this.equipement_rep, this.tache, this.tache_rep, this.individu, this.individu_rep, this.envrionnement, this.envrionnement_rep, this.ressource, this.ressource_rep});
+  Progression({this.id, this.metier, this.metier_rep, this.equipement, this.equipement_rep, this.tache, this.tache_rep, this.individu, this.individu_rep, this.environnement, this.environnement_rep, this.ressource, this.ressource_rep});
 
   factory Progression.fromJson(Map<String, dynamic> json) {
     return Progression(
@@ -26,8 +26,8 @@ class Progression {
         tache_rep: json['tache_rep'] as String,
         individu: json['individu'] as String,
         individu_rep: json['individu_rep'] as String,
-        envrionnement: json['envrionnement'] as String,
-        envrionnement_rep: json['envrionnement_rep'] as String,
+        environnement: json['environnement'] as String,
+        environnement_rep: json['environnement_rep'] as String,
         ressource: json['ressource'] as String,
         ressource_rep: json['ressource_rep'] as String
     );
