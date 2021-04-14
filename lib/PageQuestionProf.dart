@@ -1,9 +1,9 @@
-import 'package:defiphoto2021/Base%20de%20donn%C3%A9es/Question.dart';
+
 import 'package:flutter/material.dart';
 import 'PageCreationQuestion.dart';
-import '../Base de données/Services.dart';
-import '../Base de données/Utilisateur.dart';
-import '../Base de données/Question.dart';
+import 'Services.dart';
+import 'Utilisateur.dart';
+import 'Question.dart';
 
 class PageQuestionProf extends StatefulWidget {
   PageQuestionProf(this.utilisateur);

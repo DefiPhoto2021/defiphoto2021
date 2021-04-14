@@ -1,16 +1,16 @@
-import 'package:defiphoto2021/Pages/PageListeUtilisateur.dart';
-import 'package:defiphoto2021/Pages/PageQuestionProf.dart';
+import 'PageListeUtilisateur.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Pages/PageLogin.dart';
-import 'Base de données/Services.dart';
-import 'Base de données/Utilisateur.dart';
-import 'Pages/PageProfil.dart';
-import 'Pages/PageProgression.dart';
-import 'Pages/PageCreationProfil.dart';
-import 'Pages/PageListeEleves.dart';
-import '../Base de données/Services.dart';
-import '../Base de données/Utilisateur.dart';
+import '/PageLogin.dart';
+import '/Services.dart';
+import 'PageQuestionProf.dart';
+import 'Utilisateur.dart';
+import '/PageProfil.dart';
+import 'PageProgression.dart';
+import '/PageCreationProfil.dart';
+import 'PageListeEleves.dart';
+import '/Services.dart';
+import '/Utilisateur.dart';
 
 Future<void> main() async {
   ThemeData themeData(){

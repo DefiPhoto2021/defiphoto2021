@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import '../Base de données/Services.dart';
-import '../Base de données/Utilisateur.dart';
+import 'Services.dart';
+import 'Utilisateur.dart';
 
 class PageCreerQuestion extends StatefulWidget {
   PageCreerQuestion(this.utilisateur);

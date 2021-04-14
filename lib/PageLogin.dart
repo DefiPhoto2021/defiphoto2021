@@ -1,15 +1,14 @@
-import 'package:defiphoto2021/Pages/PageAide.dart';
-import 'package:defiphoto2021/Pages/PageQuestionProf.dart';
 import 'package:flutter/material.dart';
 import 'PageListeUtilisateur.dart';
 import 'PageLogin.dart';
-import '../Base de données/Services.dart';
-import '../Base de données/Utilisateur.dart';
+import 'PageQuestionProf.dart';
+import 'Services.dart';
+import 'Utilisateur.dart';
 import 'PageProfil.dart';
 import 'PageProgression.dart';
 import 'PageCreationProfil.dart';
 import 'PageCreationQuestion.dart';
-import 'PageListeEleves.dart';
+import '../PageListeEleves.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -37,7 +36,6 @@ class _PageLogin extends State<PageLogin> {
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageProgression(utilisateur)));
         } else if (utilisateur.type == 'P'){
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageQuestionProf(utilisateur)));
-
         }else if (utilisateur.type == 'A'){
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageListeUtilisateur(utilisateur)));
         }
