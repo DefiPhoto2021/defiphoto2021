@@ -1,23 +1,14 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'PageLogin.dart';
-import 'Services.dart';
-import 'Utilisateur.dart';
-=======
 import 'package:shared_preferences/shared_preferences.dart';
 import 'PageListeUtilisateur.dart';
 import 'PageLogin.dart';
 import 'PageQuestionProf.dart';
 import 'Services.dart';
->>>>>>> b723c574ecab180103f3ad7d721bae7edac9181f
 import 'PageProfil.dart';
 import 'PageProgression.dart';
 import 'PageCreationProfil.dart';
 import 'PageListeEleves.dart';
-
-<<<<<<< HEAD
-void main() {
-=======
+//:]
 Future<void> main() async {
   ThemeData themeData(){
     return ThemeData(
@@ -45,7 +36,6 @@ Future<void> main() async {
       }
     });
   }
->>>>>>> b723c574ecab180103f3ad7d721bae7edac9181f
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -108,9 +98,4 @@ class _RestartWidgetState extends State<RestartWidget> {
       child: widget.child,
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> b723c574ecab180103f3ad7d721bae7edac9181f
