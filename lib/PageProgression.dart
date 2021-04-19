@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Utilisateur.dart';
-import 'ProgressionClass.dart';
+import 'Progression.dart';
 import 'Services.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -25,8 +25,8 @@ class _PageProgression extends State<PageProgression> {
       tache_rep: '1',
       individu: '1',
       individu_rep: '1',
-      envrionnement: '1',
-      envrionnement_rep: '1',
+      environnement: '1',
+      environnement_rep: '1',
       ressource: '1',
       ressource_rep: '1');
 
@@ -81,7 +81,7 @@ class _PageProgression extends State<PageProgression> {
                       colonneBarre(prog.equipement_rep, prog.equipement),
                       colonneBarre(prog.tache_rep, prog.tache),
                       colonneBarre(prog.individu_rep, prog.individu),
-                      colonneBarre(prog.envrionnement_rep, prog.envrionnement),
+                      colonneBarre(prog.environnement_rep, prog.environnement),
                       colonneBarre(prog.ressource_rep, prog.ressource),
 
                     ],
@@ -93,7 +93,7 @@ class _PageProgression extends State<PageProgression> {
                       colonnePourcentage(prog.equipement_rep, prog.equipement),
                       colonnePourcentage(prog.tache_rep, prog.tache),
                       colonnePourcentage(prog.individu_rep, prog.individu),
-                      colonnePourcentage(prog.envrionnement_rep, prog.envrionnement),
+                      colonnePourcentage(prog.environnement_rep, prog.environnement),
                       colonnePourcentage(prog.ressource_rep, prog.ressource),
                     ],
                   ),
@@ -132,7 +132,7 @@ class _PageProgression extends State<PageProgression> {
   }
 
   double calculPourcentageTotal() {
-    if ((double.parse(prog.envrionnement) +
+    if ((double.parse(prog.environnement) +
         double.parse(prog.ressource) +
         double.parse(prog.individu) +
         double.parse(prog.tache) +
@@ -140,13 +140,13 @@ class _PageProgression extends State<PageProgression> {
         double.parse(prog.metier)) == 0){
       return 0;
     }
-    return ((double.parse(prog.envrionnement_rep) +
+    return ((double.parse(prog.environnement_rep) +
             double.parse(prog.ressource_rep) +
             double.parse(prog.individu_rep) +
             double.parse(prog.tache_rep) +
             double.parse(prog.equipement_rep) +
             double.parse(prog.metier_rep)) /
-            (double.parse(prog.envrionnement) +
+            (double.parse(prog.environnement) +
             double.parse(prog.ressource) +
             double.parse(prog.individu) +
             double.parse(prog.tache) +

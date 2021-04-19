@@ -1,3 +1,7 @@
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'PageAide.dart';
+import 'PageQuestionProf.dart';
 import 'package:flutter/material.dart';
 import 'PageListeUtilisateur.dart';
 import 'PageLogin.dart';
@@ -6,8 +10,8 @@ import 'Utilisateur.dart';
 import 'PageProfil.dart';
 import 'PageProgression.dart';
 import 'PageCreationProfil.dart';
+import 'PageCreationQuestion.dart';
 import 'PageListeEleves.dart';
-
 
 class PageLogin extends StatefulWidget {
   @override
@@ -26,14 +30,15 @@ class _PageLogin extends State<PageLogin> {
     Utilisateur utilisateur = await Services.getUtilisateur(user);
     if (utilisateur != null) {
       if (utilisateur.password == pass) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('id', utilisateur.id);
+        print("Shared preference saved!");
         if (utilisateur.type == 'É'){
-          //Navigator.pushReplacementNamed(context, '/creationProfile', arguments: utilisateur); //Enleve le bouton pour revenir en arriere
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageProgression(utilisateur)));
         } else if (utilisateur.type == 'P'){
-          //Navigator.pushReplacementNamed(context, '/creationProfile', arguments: utilisateur); //Enleve le bouton pour revenir en arriere
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageCreationProfile(utilisateur)));
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageQuestionProf(utilisateur)));
+
         }else if (utilisateur.type == 'A'){
-          //Navigator.pushReplacementNamed(context, '/creationProfile', arguments: utilisateur); //Enleve le bouton pour revenir en arriere
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageListeUtilisateur(utilisateur)));
         }
 
@@ -102,4 +107,13 @@ class _PageLogin extends State<PageLogin> {
       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+/*Future deconnexion() async{
+    try{
+      return await utilisateur.signOut()
+    }catch (e){
+
+    }
+} */
+
 }

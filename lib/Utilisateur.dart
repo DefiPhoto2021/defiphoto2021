@@ -7,6 +7,8 @@ class Utilisateur {
   String id_prof;
   String nom_stage;
 
+  bool selection = false; //Utiliser pour choisir les destinataires
+
   Utilisateur({this.id, this.nom, this.prenom, this.type, this.password, this.id_prof, this.nom_stage});
 
   factory Utilisateur.fromJson(Map<String, dynamic> json) {
