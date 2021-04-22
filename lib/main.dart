@@ -8,6 +8,7 @@ import 'PageProfil.dart';
 import 'PageProgression.dart';
 import 'PageCreationProfil.dart';
 import 'PageListeEleves.dart';
+import 'MenuPrincipal.dart';
 //:]
 Future<void> main() async {
   ThemeData themeData(){

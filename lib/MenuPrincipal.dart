@@ -1,11 +1,28 @@
+import 'package:defiphoto2021/PageLogin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:defiphoto2021/alert_dialog.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:defiphoto2021/Utilisateur.dart';
 
-class MenuPrincipal extends StatelessWidget {
+class MenuPrincipal extends StatefulWidget {
+  MenuPrincipal(this.utilisateur);
+  final Utilisateur utilisateur;
+  @override
+  _MenuPrincipalState createState() => _MenuPrincipalState(utilisateur);
+}
+
+class _MenuPrincipalState extends State<MenuPrincipal> {
+
+  _MenuPrincipalState(this.utilisateur);
+  final Utilisateur utilisateur;
+
+  bool tappedYes = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black45,
+        backgroundColor: Colors.black38,
         appBar: AppBar(
             title: Text("Menu", style: TextStyle(color: Colors.indigo[400])),
             centerTitle: true,
@@ -21,11 +38,14 @@ class MenuPrincipal extends StatelessWidget {
                   "Déconnexion",
                   style: TextStyle(color: Colors.indigo[400]),
                 ),
-                onPressed: () async {
-                  //final action = await Dialog.ouiNonDialog(
-                     // context,
-                     // "Voulez-vous vous déconnecter?",
-                     // "Veuillez sélectionner:");
+                onPressed: () async{
+                  final action =  await AlertDialogs.yesCancelDialog(context, "Déconnexion", "Voulez-vous vous déconnecter?");
+                  if (action == DialogsAction.oui){
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    prefs.remove('id');
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (BuildContext context) => PageLogin()));
+                  }
                 },
               )
             ]),
