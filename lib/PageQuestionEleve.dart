@@ -1,20 +1,20 @@
-
+import 'package:defiphoto2021/PageReponse.dart';
 import 'package:flutter/material.dart';
 import 'PageCreationQuestion.dart';
 import 'Services.dart';
 import 'Utilisateur.dart';
 import 'Question.dart';
 
-class PageQuestionProf extends StatefulWidget {
-  PageQuestionProf(this.utilisateur);
+class PageQuestionEleve extends StatefulWidget {
+  PageQuestionEleve(this.utilisateur);
   final Utilisateur utilisateur;
 
   @override
-  _PageQuestionProf createState() => _PageQuestionProf(utilisateur);
+  _PageQuestionEleve createState() => _PageQuestionEleve(utilisateur);
 }
 
-class _PageQuestionProf extends State<PageQuestionProf> {
-  _PageQuestionProf(this.utilisateur);
+class _PageQuestionEleve extends State<PageQuestionEleve> {
+  _PageQuestionEleve(this.utilisateur);
   final Utilisateur utilisateur;
   String valeurTemps = '';
 
@@ -30,9 +30,12 @@ class _PageQuestionProf extends State<PageQuestionProf> {
     Services.getQuestionListe().then((value) => {
           for (int i = 0; i < value.length; i++)
             {
-              setState(() {
-                liste.add(value[i]);
-              })
+              if (value[i].id_eleve == utilisateur.id){
+                setState(() {
+                  liste.add(value[i]);
+                })
+              }
+              else print('not cool')
             }
         });
   }
@@ -58,32 +61,42 @@ class _PageQuestionProf extends State<PageQuestionProf> {
     return listeWidget;
   }
 
+  naviguerCreationQuestion(Question question) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => PageReponse(utilisateur, question)),
+    );
+  }
+
   Widget creerTexte(Question question) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(question.question, style: TextStyle(fontSize: 18)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(valeurTemps,
-                          style: TextStyle(fontSize: 14, color: Colors.grey)),Row(children: [IconButton(onPressed: null, icon: Icon(Icons.mode_edit))],),
-                    ],
-                  ),
-                ],
-              )),
-            ],
+    return GestureDetector(
+      onTap: () => naviguerCreationQuestion(question),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(question.question, style: TextStyle(fontSize: 18)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(valeurTemps,
+                            style: TextStyle(fontSize: 14, color: Colors.grey)),
+                      ],
+                    ),
+                  ],
+                )),
+              ],
+            ),
           ),
         ),
       ),
@@ -128,14 +141,6 @@ class _PageQuestionProf extends State<PageQuestionProf> {
     );
   }
 
-  naviguerCreationQuestion() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => PageCreerQuestion(utilisateur)),
-    ).then((value) => setState(() {
-          ajouterQuestion();
-        }));
-  }
 
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -164,10 +169,6 @@ class _PageQuestionProf extends State<PageQuestionProf> {
             creerTab('E'),
             creerTab('R'),
           ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: naviguerCreationQuestion,
-          child: Icon(Icons.add),
         ),
       ),
     );

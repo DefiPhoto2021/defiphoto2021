@@ -41,5 +41,10 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Send picture to database</string>
+    <key>NSCameraUsageDescription </key>
+    <string>Capture photo to send to database/cloud service</string>
+
 </dict>
 </plist>

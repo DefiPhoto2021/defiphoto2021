@@ -1,3 +1,11 @@
+
+import 'package:defiphoto2021/MenuPrincipal.dart';
+import 'package:defiphoto2021/PageQuestionEleve.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'PageAide.dart';
+import 'PageQuestionProf.dart';
+
 import 'package:flutter/material.dart';
 import 'PageListeUtilisateur.dart';
 import 'PageLogin.dart';
@@ -33,13 +41,15 @@ class _PageLogin extends State<PageLogin> {
         prefs.setString('id', utilisateur.id);
         print("Shared preference saved!");
         if (utilisateur.type == 'É'){
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageProgression(utilisateur)));
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageQuestionEleve(utilisateur)));
         } else if (utilisateur.type == 'P'){
+
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageQuestionProf(utilisateur)));
+
         }else if (utilisateur.type == 'A'){
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageListeUtilisateur(utilisateur)));
         }
-
+        
         loginFailed = false;
       } else {
         setState(() {

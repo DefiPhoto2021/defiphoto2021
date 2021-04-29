@@ -121,6 +121,7 @@ class Services {
       map['type'] = type;
       final response = await http.post(ROOT, body: map);
       if (200 == response.statusCode) {
+        print(response.body);
         return response.body;
       } else {
         print(response.statusCode);

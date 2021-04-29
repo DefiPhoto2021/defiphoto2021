@@ -117,6 +117,7 @@ class _PageCreerQuestion extends State<PageCreerQuestion> {
     }
     if (verification == listeSelection.length) {
       questionCtrl.text = '';
+      Navigator.pop(context);
     }
   }
 

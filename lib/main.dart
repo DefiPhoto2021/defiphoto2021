@@ -1,4 +1,8 @@
+
 import 'PageListeUtilisateur.dart';
+
+import 'package:defiphoto2021/MenuPrincipal.dart';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '/PageLogin.dart';
@@ -31,11 +35,11 @@ Future<void> main() async {
   if (id != null){
     Services.getUtilisateur(id).then((value){
       if (value.type == 'É'){
-        runApp(MaterialApp(home: PageProgression(value), theme: themeData()));
+        runApp(MaterialApp(home: MenuPrincipal(value), theme: themeData()));
       } else if (value.type == 'P'){
-        runApp(MaterialApp(home: PageQuestionProf(value),theme: themeData()));
+        runApp(MaterialApp(home: MenuPrincipal(value),theme: themeData()));
       }else if (value.type == 'A'){
-        runApp(MaterialApp(home: PageListeUtilisateur(value),theme: themeData()));
+        runApp(MaterialApp(home: MenuPrincipal(value),theme: themeData()));
       }
     });
   }
@@ -56,6 +60,7 @@ class MyApp extends StatelessWidget {
             '/login': (context) => new PageLogin(),
             '/listeEleves': (context) => new PageListeEleves(null),
             '/progression': (context) => new PageProgression(null),
+            '/questionProf': (context) => new PageQuestionProf(null),
             '/profil': (context) => new PageProfil(null),
             '/aide': (context) => new PageProgression(null),
           },
