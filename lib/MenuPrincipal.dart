@@ -4,6 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:defiphoto2021/alert_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'MenuProf.dart';
+import 'PageProfil.dart';
+import 'PageAide.dart';
+import 'MenuEleve.dart';
 
 class MenuPrincipal extends StatefulWidget {
   MenuPrincipal(this.utilisateur);
@@ -55,7 +59,10 @@ class _MenuPrincipalState extends State<MenuPrincipal> {
           crossAxisSpacing: 50.0,
           children: [
             TextButton.icon(
-              onPressed: null,
+              onPressed: () {
+      if (utilisateur.type == 'É'){
+        Navigator.push(context, MaterialPageRoute(builder : (context) => PageProfil(utilisateur)));
+      }},
               icon: Icon(
                 Icons.account_circle_outlined,
                 color: Colors.indigo[400],
@@ -67,11 +74,7 @@ class _MenuPrincipalState extends State<MenuPrincipal> {
               ),
             ),
             TextButton.icon(
-              onPressed: () {
-                if (utilisateur.type == 'É'){
-                  Navigator.pushNamed(context, '/profil');
-                }
-              },
+              onPressed: null,
               icon: Icon(
                 Icons.message_outlined,
                 color: Colors.indigo[400],
@@ -84,7 +87,7 @@ class _MenuPrincipalState extends State<MenuPrincipal> {
             ),
             TextButton.icon(
               onPressed: () {
-                Navigator.pushNamed(context, '/aide');
+                Navigator.push(context, MaterialPageRoute(builder : (context) => PageAide()));
               },
               icon: Icon(
                 Icons.help,
@@ -99,9 +102,9 @@ class _MenuPrincipalState extends State<MenuPrincipal> {
             TextButton.icon(
               onPressed: () {
                 if (utilisateur.type == 'É'){
-                  Navigator.pushNamed(context, '/menuEleve');
+                  Navigator.push(context, MaterialPageRoute(builder : (context) => MenuEleve(utilisateur)));
                 } else if (utilisateur.type == 'P'){
-                  Navigator.pushNamed(context, '/menuProf');
+                  Navigator.push(context, MaterialPageRoute(builder : (context) => MenuProf(utilisateur)));
                 }
               },
               icon: Icon(

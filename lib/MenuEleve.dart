@@ -1,4 +1,5 @@
 import 'package:defiphoto2021/PageLogin.dart';
+import 'package:defiphoto2021/PageProgression.dart';
 import 'package:defiphoto2021/Utilisateur.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _MenuEleveState extends State<MenuEleve> {
               children: [
                 TextButton.icon(
                   onPressed: (){
-                    Navigator.pushNamed(context, '/progression');
+                    Navigator.push(context, MaterialPageRoute(builder : (context) => PageProgression(utilisateur)));
                   },
                   icon: Icon(
                     Icons.insert_chart_outlined,
@@ -47,7 +48,7 @@ class _MenuEleveState extends State<MenuEleve> {
                   ),
                 ),
                 TextButton.icon(
-                  onPressed: null,
+                  onPressed: (){},
                   icon: Icon(
                     Icons.list,
                     color: Colors.indigo[400],

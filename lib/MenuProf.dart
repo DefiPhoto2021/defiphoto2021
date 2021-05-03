@@ -1,7 +1,10 @@
 import 'package:defiphoto2021/PageLogin.dart';
+import 'package:defiphoto2021/PageQuestionProf.dart';
 import 'package:defiphoto2021/Utilisateur.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'PageCreationQuestion.dart';
+import 'PageListeEleves.dart';
 
 class MenuProf extends StatefulWidget {
   MenuProf(this.utilisateur);
@@ -32,7 +35,7 @@ class _MenuProfState extends State<MenuProf> {
               children: [
                 TextButton.icon(
                   onPressed: (){
-                    Navigator.pushNamed(context, '/creerQuestion');
+                    Navigator.push(context, MaterialPageRoute(builder : (context) => PageCreerQuestion(utilisateur)));
                   },
                   icon: Icon(
                     Icons.library_add_outlined,
@@ -46,7 +49,7 @@ class _MenuProfState extends State<MenuProf> {
                 ),
                 TextButton.icon(
                   onPressed: (){
-                    Navigator.pushNamed(context, '/questionProf');
+                    Navigator.push(context, MaterialPageRoute(builder : (context) => PageQuestionProf(utilisateur)));
                   },
                   icon: Icon(
                     Icons.library_books_outlined,
@@ -60,7 +63,7 @@ class _MenuProfState extends State<MenuProf> {
                 ),
                 TextButton.icon(
                   onPressed: (){
-                    Navigator.pushNamed(context, '/listeEleves');
+                    Navigator.push(context, MaterialPageRoute(builder : (context) => PageListeEleves(utilisateur)));
                   },
                   icon: Icon(
                     Icons.list_alt_outlined,
