@@ -75,6 +75,20 @@ class _MenuProfState extends State<MenuProf> {
                     style: TextStyle(color: Colors.indigo[400]),
                   ),
                 ),
+                TextButton.icon(
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder : (context) => PageListeEleves(utilisateur)));
+                  },
+                  icon: Icon(
+                    Icons.group_add_outlined,
+                    color: Colors.indigo[400],
+                    size: 60.0,
+                  ),
+                  label: Text(
+                    "Créer utilisateur",
+                    style: TextStyle(color: Colors.indigo[400]),
+                  ),
+                ),
               ],
             )));
   }
