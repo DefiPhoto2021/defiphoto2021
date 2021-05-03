@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'PageListeUtilisateur.dart';
@@ -8,6 +9,10 @@ import 'PageProfil.dart';
 import 'PageProgression.dart';
 import 'PageCreationProfil.dart';
 import 'PageListeEleves.dart';
+import 'MenuEleve.dart';
+import 'MenuPrincipal.dart';
+import 'MenuProf.dart';
+import 'PageCreationQuestion.dart';
 
 //:]
 
@@ -54,6 +59,11 @@ class MyApp extends StatelessWidget {
             '/progression': (context) => new PageProgression(null),
             '/profil': (context) => new PageProfil(null),
             '/aide': (context) => new PageProgression(null),
+            '/menuPrincipal' : (context) => new MenuPrincipal(null),
+            '/menuEleve' : (context) => new MenuEleve(null),
+            '/menuProf' : (context) => new MenuProf(null),
+            '/creerQuestion': (context) => new PageCreerQuestion(null),
+            '/questionProf' : (context) => new PageQuestionProf(null),
           },
           title: 'Flutter Demo',
           theme: ThemeData(

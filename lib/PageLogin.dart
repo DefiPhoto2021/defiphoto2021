@@ -12,6 +12,7 @@ import 'PageProgression.dart';
 import 'PageCreationProfil.dart';
 import 'PageCreationQuestion.dart';
 import 'PageListeEleves.dart';
+import 'MenuPrincipal.dart';
 
 class PageLogin extends StatefulWidget {
   @override
@@ -33,15 +34,7 @@ class _PageLogin extends State<PageLogin> {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('id', utilisateur.id);
         print("Shared preference saved!");
-        if (utilisateur.type == 'É'){
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageProgression(utilisateur)));
-        } else if (utilisateur.type == 'P'){
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageQuestionProf(utilisateur)));
-
-        }else if (utilisateur.type == 'A'){
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PageListeUtilisateur(utilisateur)));
-        }
-
+        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => MenuPrincipal(utilisateur)));
         loginFailed = false;
       } else {
         setState(() {
