@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_re/PageCreationProfil.dart';
 import 'Services.dart';
 import 'Utilisateur.dart';
 import 'PageProfil.dart';
 import 'PageProgression.dart';
+import 'alert_dialog.dart';
 
 class PageListeUtilisateur extends StatefulWidget {
   PageListeUtilisateur(this.utilisateur);
@@ -51,40 +53,10 @@ class _PageListeUtilisateur extends State<PageListeUtilisateur> {
     );
   }
 
-  showAlertDialog(BuildContext context, Utilisateur user) {
-    // set up the buttons
-    Widget cancelButton = TextButton(
-      child: Text("Non"),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-    );
-    Widget continueButton = TextButton(
-      child: Text("Oui"),
-      onPressed: () {
-        Navigator.of(context).pop();
-        Services.deleteUtilisateur(user.id).then((value) => setState(() {
-              liste.remove(user);
-            }));
-      },
-    );
-
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      title: Text("Confirmation"),
-      content: Text("Voulez-vous supprimer ce compte?"),
-      actions: [
-        cancelButton,
-        continueButton,
-      ],
-    );
-
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
+  naviguerCreationUtilsateur(Utilisateur etudiant) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => PageCreationProfile(etudiant)),
     );
   }
 
@@ -96,24 +68,35 @@ class _PageListeUtilisateur extends State<PageListeUtilisateur> {
           listeWidget.add(Padding(
             padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
             child: GestureDetector(
-              onLongPress: () => showAlertDialog(context, liste[i]),
+              onLongPress: () async {
+                final action = await AlertDialogs.yesCancelDialog(context,
+                    "Confirmation", "Voulez-vous supprimer ce compte?");
+                if (action == DialogsAction.oui) {
+                  Services.deleteUtilisateur(liste[i].id)
+                      .then((value) => setState(() {
+                            liste.remove(liste[i]);
+                          }));
+                }
+              },
               child: Card(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Flexible(child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: RichText(
-                          text: TextSpan(
-                              text: (liste[i].prenom + ' ' + liste[i].nom),
-                              style: TextStyle(fontSize: 24),
-                              children: [
-                                TextSpan(
-                                    text: ("#" + liste[i].id),
-                                    style:
-                                    TextStyle(fontSize: 16, color: Colors.grey))
-                              ])),
-                    ),),
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: RichText(
+                            text: TextSpan(
+                                text: (liste[i].prenom + ' ' + liste[i].nom),
+                                style: TextStyle(fontSize: 24),
+                                children: [
+                              TextSpan(
+                                  text: ("#" + liste[i].id),
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.grey))
+                            ])),
+                      ),
+                    ),
                     Row(
                       children: [
                         IconButton(
@@ -133,7 +116,16 @@ class _PageListeUtilisateur extends State<PageListeUtilisateur> {
           listeWidget.add(Padding(
             padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
             child: GestureDetector(
-              onLongPress: () => showAlertDialog(context, liste[i]),
+              onLongPress: () async {
+                final action = await AlertDialogs.yesCancelDialog(context,
+                    "Confirmation", "Voulez-vous supprimer ce compte?");
+                if (action == DialogsAction.oui) {
+                  Services.deleteUtilisateur(liste[i].id)
+                      .then((value) => setState(() {
+                            liste.remove(liste[i]);
+                          }));
+                }
+              },
               child: Card(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -159,17 +151,24 @@ class _PageListeUtilisateur extends State<PageListeUtilisateur> {
         }
       }
     }
+    listeWidget.add(SizedBox(
+      height: 100,
+    ));
     return listeWidget;
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Liste des utilisateurs"),
-      actions: [IconButton(icon: Icon(Icons.search), onPressed: null)],),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => naviguerCreationUtilsateur(utilisateur),
+        child: Icon(Icons.add),
+      ),
+      appBar: AppBar(
+        title: Text("Liste des utilisateurs"),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
-        child: Column(
-          children: creerCarte(),
-        ),
+        child: Column(children: creerCarte()),
       ),
     );
   }

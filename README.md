@@ -1,6 +1,16 @@
-# DefiPhoto2021
+# flutter_app_re
 
-Défi Photo 2021
+A new Flutter application.
 
-Dans le cadre de ce projet en parteneriat avec la commission scolaire (de montréal?), les étudiants du collège de Bois-De-Boulogne devaient concevoir une application visant à faciliter la communication entre les élèves et leurs professeurs lors de stages afin de faciliter un suivi sur leurs formations.
+## Getting Started
 
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

@@ -117,6 +117,7 @@ class _PageCreerQuestion extends State<PageCreerQuestion> {
     }
     if (verification == listeSelection.length) {
       questionCtrl.text = '';
+      Navigator.pop(context);
     }
   }
 
@@ -127,18 +128,20 @@ class _PageCreerQuestion extends State<PageCreerQuestion> {
       id = (random.nextInt(90000) + 10000).toString();
     });
     Services.getQuestionListe().then((value) {
-      do {
-        diff = true;
-        for (var i = 0; i < value.length; i++) {
-          if (id == value[i].id) {
-            setState(() {
-              id = (random.nextInt(9000) + 1000).toString();
-            });
-            diff = false;
-            break;
+      if (value != null) {
+        do {
+          diff = true;
+          for (var i = 0; i < value.length; i++) {
+            if (id == value[i].id) {
+              setState(() {
+                id = (random.nextInt(9000) + 1000).toString();
+              });
+              diff = false;
+              break;
+            }
           }
-        }
-      } while (!diff);
+        } while (!diff);
+      }
     });
   }
 
@@ -146,6 +149,7 @@ class _PageCreerQuestion extends State<PageCreerQuestion> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Envoyer une question'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(

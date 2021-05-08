@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'PageCreationProfil.dart';
 import 'Services.dart';
 import 'Utilisateur.dart';
 import 'PageProfil.dart';
@@ -61,21 +62,22 @@ class _PageListeEleves extends State<PageListeEleves> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Flexible(child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RichText(
-                      text: TextSpan(
-                          text: (liste[i].prenom + ' ' + liste[i].nom),
-                          style: TextStyle(fontSize: 24),
-                          children: [
-                            TextSpan(
-                                text: ("#" + liste[i].id),
-                                style: TextStyle(fontSize: 16, color: Colors.grey))
-                          ])),
-                ),),
-
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RichText(
+                        text: TextSpan(
+                            text: (liste[i].prenom + ' ' + liste[i].nom),
+                            style: TextStyle(fontSize: 24),
+                            children: [
+                          TextSpan(
+                              text: ("#" + liste[i].id),
+                              style:
+                                  TextStyle(fontSize: 16, color: Colors.grey))
+                        ])),
+                  ),
+                ),
                 Row(
-
                   children: [
                     IconButton(
                         icon: Icon(Icons.account_circle),
@@ -91,12 +93,29 @@ class _PageListeEleves extends State<PageListeEleves> {
         ));
       }
     }
+    listeWidget.add(SizedBox(
+      height: 100,
+    ));
     return listeWidget;
+  }
+
+  naviguerCreationUtilsateur(Utilisateur etudiant) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => PageCreationProfile(etudiant)),
+    );
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Liste des élèves")),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => naviguerCreationUtilsateur(utilisateur),
+        child: Icon(Icons.add),
+      ),
+      appBar: AppBar(
+        title: Text("Liste des élèves"),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: creerCarte(),

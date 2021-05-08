@@ -15,6 +15,7 @@ class _PageCreationProfile extends State<PageCreationProfile> {
   final Utilisateur utilisateur;
   String id = '';
   String type = 'É';
+  bool prof = false;
   final nomCtrl = TextEditingController();
   final prenomCtrl = TextEditingController();
   final passCtrl = TextEditingController();
@@ -25,17 +26,18 @@ class _PageCreationProfile extends State<PageCreationProfile> {
     trouverID();
     super.initState();
   }
-   trouverID(){
+
+  trouverID() {
     Random random = new Random();
     bool diff = true;
     setState(() {
       id = (random.nextInt(9000) + 1000).toString();
     });
     Services.getUtilisateursListe().then((value) {
-      do{
+      do {
         diff = true;
-        for(var i=0;i<value.length;i++){
-          if (id == value[i].id){
+        for (var i = 0; i < value.length; i++) {
+          if (id == value[i].id) {
             setState(() {
               id = (random.nextInt(9000) + 1000).toString();
             });
@@ -43,13 +45,20 @@ class _PageCreationProfile extends State<PageCreationProfile> {
             break;
           }
         }
-      }while(!diff);
+      } while (!diff);
     });
   }
-  void createUser(){
-    if (type == 'É'){
-      if (nomCtrl.text != '' && prenomCtrl.text != '' && passCtrl.text.length >= 6 && profCtrl.text != '' && stageCtrl.text != '') {
-        Services.addUtilisateur(id, nomCtrl.text, prenomCtrl.text, passCtrl.text, type, profCtrl.text, stageCtrl.text);
+
+  void createUser() {
+    //var hashedPassword = Crypt.sha512(passCtrl.text).toString();
+    if (type == 'É') {
+      if (nomCtrl.text != '' &&
+          prenomCtrl.text != '' &&
+          passCtrl.text.length >= 6 &&
+          profCtrl.text != '' &&
+          stageCtrl.text != '') {
+        Services.addUtilisateur(id, nomCtrl.text, prenomCtrl.text,
+            passCtrl.text, type, profCtrl.text, stageCtrl.text);
         nomCtrl.clear();
         prenomCtrl.clear();
         passCtrl.clear();
@@ -59,8 +68,11 @@ class _PageCreationProfile extends State<PageCreationProfile> {
           trouverID();
         });
       }
-    } else {
-      Services.addUtilisateur(id, nomCtrl.text, prenomCtrl.text, passCtrl.text, type, '0', 'null');
+    } else if (nomCtrl.text != '' &&
+        prenomCtrl.text != '' &&
+        passCtrl.text.length >= 6) {
+      Services.addUtilisateur(
+          id, nomCtrl.text, prenomCtrl.text, passCtrl.text, type, '0', 'null');
       nomCtrl.clear();
       prenomCtrl.clear();
       passCtrl.clear();
@@ -70,20 +82,26 @@ class _PageCreationProfile extends State<PageCreationProfile> {
         trouverID();
       });
     }
-
-
   }
+
   @override
   Widget build(BuildContext context) {
+    if (utilisateur.type == 'P') {
+      prof = true;
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text('Créer un nouveau compte'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(children: [
-            Text(('ID: ' + id), style: TextStyle(fontSize: 30),),
+            Text(
+              ('ID: ' + id),
+              style: TextStyle(fontSize: 30),
+            ),
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -123,10 +141,15 @@ class _PageCreationProfile extends State<PageCreationProfile> {
   }
 
   Widget creerTextField(String indice, TextEditingController ctrl) {
-    bool _enabled;
-    bool prof = false;
+    bool _enabled = true;
+    bool lineThru = true;
     if ((indice == "ID de l'enseignant" || indice == "Nom du stage") &&
         (type == 'P' || type == 'A')) {
+      setState(() {
+        lineThru = false;
+        _enabled = false;
+      });
+    } else if (prof && indice == "ID de l'enseignant") {
       setState(() {
         _enabled = false;
       });
@@ -135,11 +158,19 @@ class _PageCreationProfile extends State<PageCreationProfile> {
         _enabled = true;
       });
     }
+    if (prof) {
+      profCtrl.text = utilisateur.id;
+    }
+
     return TextField(
       style: TextStyle(fontSize: 24),
       controller: ctrl,
-      decoration:
-          InputDecoration(enabled: _enabled ? true : false, labelText: indice, labelStyle: _enabled ?null:TextStyle(decoration: TextDecoration.lineThrough)),
+      decoration: InputDecoration(
+          enabled: _enabled ? true : false,
+          labelText: indice,
+          labelStyle: lineThru
+              ? null
+              : TextStyle(decoration: TextDecoration.lineThrough)),
     );
   }
 

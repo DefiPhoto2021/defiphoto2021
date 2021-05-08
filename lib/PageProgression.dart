@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Utilisateur.dart';
+import '/Utilisateur.dart';
 import 'Progression.dart';
 import 'Services.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -15,7 +15,8 @@ class PageProgression extends StatefulWidget {
 class _PageProgression extends State<PageProgression> {
   _PageProgression(this.etudiant);
   final Utilisateur etudiant;
-  Progression prog = new Progression( //J'initialise avec des valeurs temporaires
+  Progression prog = new Progression(
+      //J'initialise avec des valeurs temporaires
       id: '1',
       metier: '1',
       metier_rep: '1',
@@ -29,7 +30,6 @@ class _PageProgression extends State<PageProgression> {
       environnement_rep: '1',
       ressource: '1',
       ressource_rep: '1');
-
   void initState() {
     getProgression(etudiant.id);
     super.initState();
@@ -49,7 +49,10 @@ class _PageProgression extends State<PageProgression> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Progression')),
+      appBar: AppBar(
+        title: Text('Progression'),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -83,7 +86,6 @@ class _PageProgression extends State<PageProgression> {
                       colonneBarre(prog.individu_rep, prog.individu),
                       colonneBarre(prog.environnement_rep, prog.environnement),
                       colonneBarre(prog.ressource_rep, prog.ressource),
-
                     ],
                   ),
                   Column(
@@ -125,19 +127,21 @@ class _PageProgression extends State<PageProgression> {
   }
 
   String calculPourcentage(String rep, String total) {
-    if (total == '0'){
+    if (total == "0") {
       return 'null';
     }
-    return (double.parse(rep) / double.parse(total) * 100).round().toString() + '%';
+    return (double.parse(rep) / double.parse(total) * 100).round().toString() +
+        '%';
   }
 
   double calculPourcentageTotal() {
     if ((double.parse(prog.environnement) +
-        double.parse(prog.ressource) +
-        double.parse(prog.individu) +
-        double.parse(prog.tache) +
-        double.parse(prog.equipement) +
-        double.parse(prog.metier)) == 0){
+            double.parse(prog.ressource) +
+            double.parse(prog.individu) +
+            double.parse(prog.tache) +
+            double.parse(prog.equipement) +
+            double.parse(prog.metier)) ==
+        0) {
       return 0;
     }
     return ((double.parse(prog.environnement_rep) +
@@ -146,7 +150,7 @@ class _PageProgression extends State<PageProgression> {
             double.parse(prog.tache_rep) +
             double.parse(prog.equipement_rep) +
             double.parse(prog.metier_rep)) /
-            (double.parse(prog.environnement) +
+        (double.parse(prog.environnement) +
             double.parse(prog.ressource) +
             double.parse(prog.individu) +
             double.parse(prog.tache) +
@@ -155,8 +159,14 @@ class _PageProgression extends State<PageProgression> {
   }
 
   Widget colonnePourcentage(String rep, String total) {
-    if (total == '0'){
-      return Text('');
+    if (total == '0') {
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+        child: Text(
+          '',
+          style: TextStyle(fontSize: 26),
+        ),
+      );
     }
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -173,7 +183,7 @@ class _PageProgression extends State<PageProgression> {
   }
 
   Widget colonneBarre(String rep, String total) {
-    if (total == '0'){
+    if (total == '0') {
       return Padding(
         padding: const EdgeInsets.all(13.5),
         child: Text('Pas de question', style: TextStyle(fontSize: 20)),

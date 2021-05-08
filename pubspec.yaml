@@ -1,4 +1,4 @@
-name: defiphoto2021
+name: flutter_app_re
 description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
@@ -23,14 +23,21 @@ environment:
 dependencies:
   shared_preferences: ^2.0.5
   percent_indicator: ^3.0.1
-  http: ^0.13.1
+  image_picker: ^0.7.4
+  http: ^0.13.3
+  flutter_speed_dial: ^3.0.5
+  hexcolor: ^2.0.3
+  firebase_storage: ^8.0.5
+  firebase_core: ^1.1.0
+  firebase_analytics: ^8.0.3
   flutter:
     sdk: flutter
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.2
+  cupertino_icons: ^1.0.2
+  dcdg: ^3.0.0
 
 dev_dependencies:
   flutter_test:
