@@ -29,6 +29,7 @@ class _PageReponse extends State<PageReponse> {
   File _image;
   String imageName = "aucune";
   String downloadURL = 'null';
+  String imageURL = "null";
   String id = '';
   bool repondu = false;
   bool disbaled = false;
@@ -77,6 +78,7 @@ class _PageReponse extends State<PageReponse> {
         Services.getReponse(question.reponse_id).then((value) => {
               setState(() {
                 reponseCtrl.text = value.reponse;
+                imageURL = value.image_name;
                 disbaled = true;
               })
             });
@@ -126,7 +128,40 @@ class _PageReponse extends State<PageReponse> {
       }
     });
   }
-
+  List<Widget> creerColonne(BuildContext context){
+    List<Widget> listeWidget = List<Widget>.empty(growable: true);
+    listeWidget.add(Text(
+      question.question,
+      style: TextStyle(fontSize: 24),
+    ));
+    listeWidget.add(TextField(
+          enabled: disbaled ? false : true,
+          controller: reponseCtrl,
+          maxLength: 200,
+          maxLines: 10,
+          decoration: InputDecoration(
+              hintText: 'Écrivez votre réponse ici',
+              contentPadding: EdgeInsets.all(10),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.horizontal())),
+          style: TextStyle(fontSize: 20),
+        ));
+    listeWidget.add(SizedBox(
+          height: 20,
+        ));
+    if (repondu){
+      if (imageURL != "null"){
+        listeWidget.add(Text('Image envoyée:'));
+        listeWidget.add(Image.network(imageURL));
+      }
+    } else {
+      listeWidget.add(Text("image: " + imageName));
+      listeWidget.add(ElevatedButton(
+          onPressed: disbaled ? null : () => envoyer(context),
+          child: Text("Envoyer")));
+    }
+  return listeWidget;
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -138,34 +173,7 @@ class _PageReponse extends State<PageReponse> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
-            children: [
-              Text(
-                question.question,
-                style: TextStyle(fontSize: 24),
-              ),
-              TextField(
-                enabled: disbaled ? false : true,
-                controller: reponseCtrl,
-                maxLength: 200,
-                maxLines: 10,
-                decoration: InputDecoration(
-                    hintText: 'Écrivez votre réponse ici',
-                    contentPadding: EdgeInsets.all(10),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.horizontal())),
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text("image: " + imageName),
-              SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                  onPressed: disbaled ? null : () => envoyer(context),
-                  child: Text("Envoyer"))
-            ],
+            children: creerColonne(context),
           ),
         ),
       ),

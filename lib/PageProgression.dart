@@ -197,7 +197,7 @@ class _PageProgression extends State<PageProgression> {
           animation: true,
           progressColor: Colors.blue,
           linearStrokeCap: LinearStrokeCap.butt,
-          width: 275),
-    );
+          width: (MediaQuery.of(context).size.width/1.7),
+    ));
   }
 }

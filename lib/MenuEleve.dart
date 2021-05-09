@@ -40,7 +40,7 @@ class _MenuEleveState extends State<MenuEleve> {
               },
               icon: Icon(
                 Icons.insert_chart_outlined,
-                size: 60.0,
+                size: 50.0,
               ),
               label: Text(
                 "Progression",
