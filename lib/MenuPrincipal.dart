@@ -108,12 +108,12 @@ class _MenuPrincipalState extends State<MenuPrincipal> {
                 }
               },
               icon: Icon(
-                Icons.logout,
+                Icons.more_horiz,
                 color: Colors.indigo[400],
                 size: 60.0,
               ),
               label: Text(
-                "Temp",
+                "Plus d'option",
                 style: TextStyle(color: Colors.indigo[400]),
               ),
             ),
