@@ -1,5 +1,4 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 import 'MenuPrincipal.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +12,7 @@ Future<void> main() async {
   ThemeData themeData() {
     return ThemeData(
       brightness: Brightness.dark,
+      primarySwatch: Colors.blueGrey,
       fontFamily: 'Georgia',
       textTheme: TextTheme(
         headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
