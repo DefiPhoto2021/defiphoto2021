@@ -58,11 +58,13 @@ Cet utilisateur a accès aux échanges faits entre les étudiants et enseignants
 
 Concernant les logins, plusieurs identifiants sont déjà existants :
 
-		ID	MOT DE PASSE
+	ID      MOT DE PASSE
 
-Élève		8521	123123
-Enseignant	2396	123123	
-Admin		999	123123
+8521 ****** 123123  (Élève)
+
+2396 ****** 123123	(Enseignant)
+
+999 ******* 123123	(Admin)
 
  
 #ÉCHÉANCIER 
