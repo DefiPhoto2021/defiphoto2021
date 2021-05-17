@@ -15,7 +15,7 @@ Ils sont ensuite dirigés vers une page d’accueil dans laquelle il y aura une 
 Une option de déconnection au haut de la page vers la droite est aussi incluse.  
 Pour les étudiants, une option progression sera visible, dans laquelle ces derniers pourront voir leur progression dans chaque lettre de l’acronyme métier ainsi que leur progression totale dans la réponse des questions.
 Un bouton «plus d’options» les emmène vers un second menu propre 
-à chaque type d’utilisateur.
+à chaque type d’utilisateur.  L’application possède aussi un mode hors ligne accessible aux étudiants.
 
 1.	Étudiants
 
