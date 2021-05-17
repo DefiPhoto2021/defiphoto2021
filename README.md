@@ -1,6 +1,6 @@
 CONTEXTUALISATION DU PROJET
  
-Objectif: 
+#Objectif: 
 
 Le défi photo 2021 est un projet développé en collaboration et sous la tutelle de la commission scolaire, d’après ses requêtes.  
 Les étudiants du collège de Bois-De-Boulogne ont comme objectif de développer une application visant à faciliter la communication entre des élèves en stage et leur mentors/professeurs.  
@@ -8,7 +8,7 @@ Cette application amène des fonctionnalités telles que le partage de photos, d
 Notre projet est en lien avec le PFAE, le parcours de formation axée sur l’emploi. Ce programme s’adresse aux jeunes de 15 ans et plus qui ont des difficultés d’apprentissage et qui sentent que le système scolaire ne correspond pas tout à fait à leur besoin. Il leur offre la possibilité de faire des stages auprès d’entreprises variées dans le but d’obtenir un certificat qui leur permettra soit d’accéder au marché du travail, soit de poursuivre leurs études en formation professionnelle ou générale. 
 La progression des élèves durant le programme est supervisée et évaluée par des enseignants.
  
-Emploi de l’application : 
+#Emploi de l’application : 
 
 Chaque utilisateur se connecte à travers la page de connexion ayant 2 champs à remplir : leur ID et un mot de passe relatif à ce dernier. 
 Ils sont ensuite dirigés vers une page d’accueil dans laquelle il y aura une icône de profil pour visionner leur profil, une bulle « d’aide » afin d’aider les utilisateurs dans leur utilisation de l’application et comprendre l’accessibilité des options disponibles, entre-autres l’acronyme MÉTIER.  
@@ -54,31 +54,27 @@ La quatrième leur permet de créer des comptes pour de nouveaux stagiaires.
 Cet utilisateur a accès aux échanges faits entre les étudiants et enseignants, que cela soit pour les questions, photos ou autres.   Il a aussi accès aux profils de ces derniers ainsi que la possibilité de créer de nouveaux utilisateurs (nouveau comptes étudiants,  enseignants,  administrateurs).  Il a accès aux profils de tous les utilisateurs.
 
 
-LOGINS : 
+#LOGINS : 
 
 Concernant les logins, plusieurs identifiants sont déjà existants :
 
-	ID	MOT DE PASSE
+		ID	MOT DE PASSE
 
-Élève		
-Enseignant		
-Admin		
+Élève		8521	123123
+Enseignant	2396	123123	
+Admin		999	123123
 
  
-ÉCHÉANCIER 
+#ÉCHÉANCIER 
  
  
-
-
 
 
 
+
+
  
-COMMENT REPRODUIRE LE PROJET?  
- 
- 
- 
- 
+#COMMENT REPRODUIRE LE PROJET?  
  
  
  
@@ -86,7 +82,11 @@ COMMENT REPRODUIRE LE PROJET?
  
  
  
-CLASSES RELATIVES À L’APPLICATION FLUTTER DÉVELOPPÉE 
+ 
+ 
+ 
+ 
+#CLASSES RELATIVES À L’APPLICATION FLUTTER DÉVELOPPÉE 
  
  
 •	PageLogin : Elle permet aux utilisateurs de se connecter à l’application. 
@@ -100,12 +100,12 @@ CLASSES RELATIVES À L’APPLICATION FLUTTER DÉVELOPPÉE
 •	MenuProf : C’est la page dans laquelle l’enseigant arrive après avoir cliqué sur le bouton «plus d’option» situé dans le menu principal. 
  
  
-Différentes fonctionnalités de l’application 
+#Différentes fonctionnalités de l’application 
  
 •	Connexion automatique: 
 •	 Envoi de photos : 
  
-IMAGES DU PROJET
+#IMAGES DU PROJET
 
 Voici une vue de la page de progression de l’étudiant avec l’acronyme « MÉTIER ».  Chaque catégorie a sa propre barre de progression  ainsi que son pourcentage achevé dans la réponse de questions.  Un cercle au bas de la page nous montre notre progression totale sur l’ensemble de nos catégories.
 
