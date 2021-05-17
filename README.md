@@ -103,7 +103,7 @@ Admin		999	123123
 #Différentes fonctionnalités de l’application 
  
 •	Connexion automatique: 
-•	 Envoi de photos : 
+•	 Envoi de photos:
  
 #IMAGES DU PROJET
 
