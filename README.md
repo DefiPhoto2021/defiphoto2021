@@ -116,7 +116,9 @@ Voici une vue de la page de progression de l’étudiant avec l’acronyme « M�
 
 
 
-Page de login
+
+PAGE DE LOGIN
+
 Ici nous pouvons observer la page de login dans laquelle chaque utilisateur devra entrer ses identifiants afin d’avoir accès à son compte.  2 Champs sont visibles, soit l’un étant l’ID de login and l’autre le mot de passe, en lettre cachées.
 
 
@@ -130,7 +132,8 @@ Ici nous pouvons observer la page de login dans laquelle chaque utilisateur devr
 
 
 
-Interface pour créer un nouvel utilisateur
+INTERFACE POUR CRÉER UN NOUVEL UTILISATEUR
+
 L’interface pour créer un compte par un administrateur, d’où les cases pour choisir le type d’utilisateur voulu (étudiant, professeur, admin).  On y entre les informations demandées pour ensuite créer un nouvel utilisateur.  À noter que le mot de passe requiert 6 caractères.
 
 
@@ -141,7 +144,8 @@ L’interface pour créer un compte par un administrateur, d’où les cases pou
 
 
 
-Interface pour créer une question
+INTERFACE POUR CRÉER UNE QUESTION
+
 Le professeur peut créer une question en l’écrivant dans une boite texte et choisir la catégorie relative à sa question au bas de la page.  Le professeur doit choisir au moins 1 destinataire avant d’envoyer sa question.
 
 
@@ -156,7 +160,8 @@ Le professeur peut créer une question en l’écrivant dans une boite texte et 
 
 
 
-Interface d’un profil d’étudiant
+INTERFACE D'UN PROFIL ÉTUDIANT
+
 Vue de l’interface du profil d’un étudiant comportant ses informations personnelles, telles que 
 
 -	L’ID
@@ -170,7 +175,7 @@ Vue de l’interface du profil d’un étudiant comportant ses informations pers
 
 
 
-Interface pour la modification d’une question
+INTERFACE POUR LA MODIFICATION  D'UNE QUESTION
 
 Un enseignant a la possibilité de modifier une question pour l’envoyer à ses élèves, ou comme l’indique le bouton rouge, annuler ses changements en cliquant sur « supprimer ».
 
@@ -181,7 +186,7 @@ Un enseignant a la possibilité de modifier une question pour l’envoyer à ses
 
 
 
-Interface de la liste d’étudiants
+INTERFACE DE LA LISTE D'ÉTUDIANTS
 
 Vue de l’enseignant sur la liste d’élèves sous
 son aile.  En cliquant sur chaque élève, 
@@ -195,7 +200,7 @@ son aile.  En cliquant sur chaque élève,
 
 
 
-Interface du menu d’aide relatif à chaque utilisateur
+INTERFACE DU MENU D'AIDE RELATIF À CHAQUE UTILISATEUR
 	
 Depuis le menu principal pour chaque utilisateur, l’option aide est offerte et mène à cet interface dans le but d’expliquer l’acronyme « MÉTIER ».  L’autre onglet de fonctionnement explique à l’utilisateur le fonctionnement de l’application.
 
