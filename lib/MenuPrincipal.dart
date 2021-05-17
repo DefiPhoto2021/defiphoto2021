@@ -56,7 +56,7 @@ class _MenuPrincipalState extends State<MenuPrincipal> {
               onPressed: () {
 
         Navigator.push(context, MaterialPageRoute(builder : (context) => PageProfil(utilisateur)));
-      
+
       },
               icon: Icon(
                 Icons.account_circle_outlined,
