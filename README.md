@@ -15,7 +15,7 @@ Ils sont ensuite dirigés vers une page d’accueil dans laquelle il y aura une 
 Une option de déconnection au haut de la page vers la droite est aussi incluse.  
 Pour les étudiants, une option progression sera visible, dans laquelle ces derniers pourront voir leur progression dans chaque lettre de l’acronyme métier ainsi que leur progression totale dans la réponse des questions.
 Un bouton «plus d’options» les emmène vers un second menu propre 
-à chaque type d’utilisateur.
+à chaque type d’utilisateur.  L’application possède aussi un mode hors ligne accessible aux étudiants.
 
 1.	Étudiants
 
@@ -58,11 +58,13 @@ Cet utilisateur a accès aux échanges faits entre les étudiants et enseignants
 
 Concernant les logins, plusieurs identifiants sont déjà existants :
 
-		ID	MOT DE PASSE
+	ID      MOT DE PASSE
 
-Élève		8521	123123
-Enseignant	2396	123123	
-Admin		999	123123
+8521 ****** 123123  (Élève)
+
+2396 ****** 123123	(Enseignant)
+
+999 ******* 123123	(Admin)
 
  
 #ÉCHÉANCIER 
