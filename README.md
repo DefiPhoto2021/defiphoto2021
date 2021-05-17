@@ -110,6 +110,7 @@ IMAGES DU PROJET
 Voici une vue de la page de progression de l’étudiant avec l’acronyme « MÉTIER ».  Chaque catégorie a sa propre barre de progression  ainsi que son pourcentage achevé dans la réponse de questions.  Un cercle au bas de la page nous montre notre progression totale sur l’ensemble de nos catégories.
 
 
+![MicrosoftTeams-image](https://user-images.githubusercontent.com/79108574/118507147-f649a480-b6fb-11eb-8f7f-d4087b87b563.png)
 
 
 
@@ -120,19 +121,21 @@ Ici nous pouvons observer la page de login dans laquelle chaque utilisateur devr
 
 
 
+![MicrosoftTeams-image (1)](https://user-images.githubusercontent.com/79108574/118507166-fb0e5880-b6fb-11eb-9160-fd9b3ba22758.png)
 
 
 
 
 
-![MicrosoftTeams-image](https://user-images.githubusercontent.com/79108574/118506156-1036b780-b6fb-11eb-9064-3d080ac18fe9.png)
+
 
 
 Interface pour créer un nouvel utilisateur
-L’interface pour créer un compte par un administrateur, d’où les cases pour choisir le type d’utilisateur voulu (étudiant, professeur, admin).  On y entre les informations demandées pour ensuite créer un nouvel utilisateur.
+L’interface pour créer un compte par un administrateur, d’où les cases pour choisir le type d’utilisateur voulu (étudiant, professeur, admin).  On y entre les informations demandées pour ensuite créer un nouvel utilisateur.  À noter que le mot de passe requiert 6 caractères.
 
 
 
+![MicrosoftTeams-image (2)](https://user-images.githubusercontent.com/79108574/118507200-02cdfd00-b6fc-11eb-9119-0122febc6f16.png)
 
 
 
@@ -145,6 +148,7 @@ Le professeur peut créer une question en l’écrivant dans une boite texte et 
 
 
 
+![CreationQuestion](https://user-images.githubusercontent.com/79108574/118507569-593b3b80-b6fc-11eb-97e9-4be98f9dc9e6.PNG)
 
 
 
@@ -161,25 +165,18 @@ Vue de l’interface du profil d’un étudiant comportant ses informations pers
 -	L’enseignant auquel il est attribué
 -	Le stage auquel il participe
 
+
+![MicrosoftTeams-image (3)](https://user-images.githubusercontent.com/79108574/118507623-67895780-b6fc-11eb-8fb8-d3d0bdfd090b.png)
+
+
+
 Interface pour la modification d’une question
 
 Un enseignant a la possibilité de modifier une question pour l’envoyer à ses élèves, ou comme l’indique le bouton rouge, annuler ses changements en cliquant sur « supprimer ».
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+![ModifierQuestion](https://user-images.githubusercontent.com/79108574/118507634-6bb57500-b6fc-11eb-8040-9b166aa92b61.PNG)
 
 
 
@@ -193,6 +190,7 @@ son aile.  En cliquant sur chaque élève,
 
 
 
+![MicrosoftTeams-image (4)](https://user-images.githubusercontent.com/79108574/118507670-73751980-b6fc-11eb-9a3d-92f335b74763.png)
 
 
 
@@ -203,6 +201,7 @@ Depuis le menu principal pour chaque utilisateur, l’option aide est offerte et
 
 
 
+![MicrosoftTeams-image (5)](https://user-images.githubusercontent.com/79108574/118507683-75d77380-b6fc-11eb-8d33-f3b909303b8b.png)
 
 
 
